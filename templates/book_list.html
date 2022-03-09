@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h2><a href="{% url 'book_list'  %}">Show All Books</a></h2>
+<h4><a href="{% url 'list_favorites'  %}">Show Favorites</a></h4>
+<h4><a href="{% url 'sort_books_asc'  %}">Sort Books in Ascending Order</a></h4><h4><a href="{% url 'sort_books_desc'  %}">Sort Books in Descending Order</a></h4>
+<h4><a href="{% url 'show_javascript'  %}">Books in Javascript Category</a></h4><h4><a href="{% url 'show_python'  %}">Books in Python Category</a></h4>
+<h4><a href="{% url 'show_gaming'  %}">Books in Gaming Category</a></h4><h4><a href="{% url 'show_testing'  %}">Books in Testing Category</a></h4>
+<h4><a href="{% url 'add_book' pk=user.pk %}">Add Book</a></h4>
+<h4><a href="{% url 'add_suggestion' pk=user.pk %}">Add Suggestion</a></h4>
+        {% for book in books %}
+        {% if book.user_id == user.id %}
+        
+    <h2><a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }} {% if book.favorite %} {{book.favorite}} {% endif %}</a></h2>
+
+    <ul>Author: {{book.author}}</ul>
+    <ul>Description: {{book.description}}</ul>
+    <ul>Website:    {{book.url}}</ul>
+    <ul>Date Added: {{book.date}}</ul>
+    <ul><a href="{% url 'add_favorite' pk=book.pk %}">Add to Favorites</a><a href="{% url 'remove_favorite' pk=book.pk %}">        Remove Favorite</a></ul>
+    <ul><a href="{% url 'add_javascript' pk=book.pk %}">Add to Javascript</a><ul><a href="{% url 'add_python' pk=book.pk %}"> Add to Python</a><a href="{% url 'add_gaming' pk=book.pk %}"> Add to Gaming</a><a href="{% url 'add_testing' pk=book.pk %}"> Add to Testing</a>
+{% endif %}
+    {% endfor %}
+{% endblock %}

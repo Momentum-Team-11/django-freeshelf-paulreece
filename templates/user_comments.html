@@ -1,0 +1,4 @@
+{%for comment in comments %}
+<div><a href="{% url 'user_comments' pk=book.pk %}">View your Comments</a></div>
+<div>{{ comment.text }}</div>
+<div>{{ comment.created_date }}</div>

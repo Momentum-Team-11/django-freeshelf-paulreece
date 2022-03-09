@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Suggest a Book</h1>
+
+<div>
+    <form action="{% url 'add_suggestion' pk=user.pk%}" method="POST">
+        {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+      <button type="submit">Suggest Book</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

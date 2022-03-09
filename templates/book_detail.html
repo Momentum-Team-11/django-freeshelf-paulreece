@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2><a href="{% url 'book_detail' pk=book.pk %}">{{ Book.title }} {% if book.favorite %} {{book.favorite}} {% endif %}</a></h2>
+    <ul>Author: {{book.author}}</ul>
+    <ul>Description: {{book.description}}</ul>
+    <ul>Webiste: {{book.url}}</ul>
+    <ul>Date Added: {{book.date}}</ul>
+    {%for comment in comments %}
+      {% if comment.book_id == book.id %}
+
+      <div>Comment: {{ comment.text }}</div>
+      <div>Date Created: {{ comment.created_date }}</div>
+    {% endif %}
+    {% endfor %}
+    <ul><a href="{% url 'add_favorite' pk=book.pk %}">Add to Favorites</a><a href="{% url 'remove_favorite' pk=book.pk %}">        Remove Favorite</a></ul>
+    <ul><a href="{% url 'add_javascript' pk=book.pk %}">Add to Javascript</a>
+    <ul><a href="{% url 'add_comment' pk=book.pk %}">Add Comment</a>
+
+
+{% endblock %}
