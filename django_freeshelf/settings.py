@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import environ
+import environ, os
 
 env = environ.Env(
     # set casting, default value
@@ -140,3 +140,6 @@ AUTH_USER_MODEL = "books.User"
 ACCOUNT_ACTIVATION_DAYS = 7
 
 LOGIN_REDIRECT_URL = "book_list"
+
+MEDIA_ROOT = BASE_DIR, "media/"
+MEDIA_URL = "/media/"

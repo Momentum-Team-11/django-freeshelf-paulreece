@@ -51,13 +51,13 @@ def list_books(request):
 @login_required(login_url="auth_login")
 def asc_order(request):
     books = Book.objects.all().order_by("date")
-    return render(request, "desc_order.html", {"books": books})
+    return render(request, "asc_order.html", {"books": books})
 
 
 @login_required(login_url="auth_login")
 def desc_order(request):
     books = Book.objects.all().order_by("-date")
-    return render(request, "asc_order.html", {"books": books})
+    return render(request, "desc_order.html", {"books": books})
 
 
 @login_required(login_url="auth_login")

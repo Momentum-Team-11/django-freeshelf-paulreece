@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from books import views as book_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -48,3 +50,5 @@ urlpatterns = [
     path("books/<int:pk>/comment", book_views.add_comment, name="add_comment"),
     path("comments", book_views.user_comments, name="user_comments"),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
