@@ -9,8 +9,15 @@ django-debug-toolbar = "*"
 django-environ = "*"
 werkzeug = "*"
 django-extensions = "*"
+django-registration-redux = "*"
+pillow = "*"
 
 [dev-packages]
+flake8 = "*"
+black = "*"
 
 [requires]
 python_version = "3.10"
+
+[pipenv]
+allow_prereleases = true

@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <title>Books</title>
+
+</head>
+<body>
+    <h1>Books</h1>
+    <div>
+    {% if user.is_authenticated %}
+        <a href = "{% url 'auth_logout'  %}">Logout</a>
+    
+    {% else %}
+        <a href = "{% url 'registration_register'  %}">Register</a>
+        <a href = "{% url 'auth_login'  %}">Login</a>
+    {% endif %}
+    </div>
+    <div class="mw9 center">
+    {% block content %}
+    {% endblock %}
+      </div>
+</body>
+</html>

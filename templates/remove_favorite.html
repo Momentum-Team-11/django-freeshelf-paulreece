@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Remove Favorite</h1>
+
+<div>
+  <form action="{% url 'remove_favorite' pk=book.pk %}" method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to remove the favorite?</p>
+    <div>
+      <button type="submit">Remove Favorite</button><br />
+      <a href="{% url 'list_favorites' %}">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
